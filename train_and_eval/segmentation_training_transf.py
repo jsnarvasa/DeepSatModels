@@ -18,6 +18,7 @@ from metrics.numpy_metrics import get_classification_metrics, get_per_class_loss
 from metrics.loss_functions import get_loss
 from utils.summaries import write_mean_summaries, write_class_summaries
 from data import get_loss_data_input
+import datetime
 
 
 def train_and_evaluate(net, dataloaders, config, device, lin_cls=False):
@@ -138,6 +139,8 @@ def train_and_evaluate(net, dataloaders, config, device, lin_cls=False):
     BEST_IOU = 0
     net.train()
     for epoch in range(start_epoch, start_epoch + num_epochs):  # loop over the dataset multiple times
+        start_time = datetime.datetime.now()
+        print(f'Starting epoch number {epoch} out of {num_epochs}')
         for step, sample in enumerate(dataloaders['train']):
             abs_step = start_global + (epoch - start_epoch) * num_steps_train + step
             logits, ground_truth, loss = train_step(net, sample, loss_fn, optimizer, device, loss_input_fn=loss_input_fn)
@@ -182,26 +185,29 @@ def train_and_evaluate(net, dataloaders, config, device, lin_cls=False):
                 net.train()
 
         scheduler.step_update(abs_step)
+        end_time = datetime.datetime.now()
+        delta = (end_time - start_time)
+        print(f'Time taken for epoch {epoch}: {delta.total_seconds()/60} mins')
 
 
 
 if __name__ == "__main__":
 
-    # parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
-    # parser.add_argument('--config', help='configuration (.yaml) file to use')
-    # parser.add_argument('--device', default='0,1', type=str,
-    #                      help='gpu ids to use')
+    parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
+    parser.add_argument('--config', help='configuration (.yaml) file to use')
+    parser.add_argument('--device', default='0,1', type=str,
+                         help='gpu ids to use')
     # parser.add_argument('--lin', action='store_true',
     #                      help='train linear classifier only')
     #
-    # args = parser.parse_args()
-    # config_file = args.config
-    # print(args.device)
-    # device_ids = [int(d) for d in args.device.split(',')]
+    args = parser.parse_args()
+    config_file = args.config
+    print(args.device)
+    device_ids = [int(d) for d in args.device.split(',')]
     # lin_cls = args.lin
 
-    config_file = 'configs/PASTIS24/TSViT_fold1.yaml'
-    device_ids = [0, 1]
+    #config_file = 'configs/PASTIS24/TSViT_fold1.yaml'
+    #device_ids = [0, 1]
     lin_cls = False
 
     device = get_device(device_ids, allow_cpu=False)
