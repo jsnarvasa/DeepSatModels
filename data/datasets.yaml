@@ -14,16 +14,23 @@ T31TFM_1618:
 #     paths_train: "/media/michaeltrs/0a8a5a48-ede5-47d0-8eff-10d11350bf98/Satellite_Data/PASTIS24/fold-paths/folds_1_123_paths.csv"
 #     paths_eval: "/media/michaeltrs/0a8a5a48-ede5-47d0-8eff-10d11350bf98/Satellite_Data/PASTIS24/fold-paths/fold_4_paths.csv"
 #     paths_test: "/media/michaeltrs/0a8a5a48-ede5-47d0-8eff-10d11350bf98/Satellite_Data/PASTIS24/fold-paths/fold_5_paths.csv"
-# PASTIS24_fold1:
-#     basedir: "/content/PASTIS24"
-#     paths_train: "/content/PASTIS24/fold-paths/folds_1_123_paths.csv"
-#     paths_eval: "/content/PASTIS24/fold-paths/fold_4_paths.csv"
-#     paths_test: "/content/PASTIS24/fold-paths/fold_5_paths.csv"
-PASTIS24_fold1:
+PASTIS24_fold1_colab:
+    basedir: "/content/PASTIS24"
+    paths_train: "/content/PASTIS24/fold-paths/folds_1_123_paths.csv"
+    paths_eval: "/content/PASTIS24/fold-paths/fold_4_paths.csv"
+    paths_test: "/content/PASTIS24/fold-paths/fold_5_paths.csv"
+
+PASTIS24_fold1_local:
     basedir: "/Users/jsnarvasa/Downloads/PASTIS24"
     paths_train: "/Users/jsnarvasa/Downloads/PASTIS24/fold-paths/folds_1_123_paths.csv"
     paths_eval: "/Users/jsnarvasa/Downloads/PASTIS24/fold-paths/fold_4_paths.csv"
     paths_test: "/Users/jsnarvasa/Downloads/PASTIS24/fold-paths/fold_5_paths.csv"
+
+PASTIS24_fold1_hpc:
+    basedir: "/project/RDS-FEI-VUR-RW/jnar3156/PASTIS24"
+    paths_train: "/project/RDS-FEI-VUR-RW/jnar3156/PASTIS24/fold-paths/folds_1_123_paths.csv"
+    paths_eval: "/project/RDS-FEI-VUR-RW/jnar3156/PASTIS24/fold-paths/fold_4_paths.csv"
+    paths_test: "/project/RDS-FEI-VUR-RW/jnar3156/PASTIS24/fold-paths/fold_5_paths.csv"
 
 
 PASTIS24_fold2:
