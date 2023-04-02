@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -P VUR
+#PBS -N jnar3156_TS-ViT
+#PBS -l select=1:ncpus=1:ngpus=1:mem=8gb
+#PBS -l walltime=00:20:00
+#PBS -M jnar3156@uni.sydney.edu.au
+
+# Load the modules
+module load python/3.8.2
+
+# Activate virtualenv
+source ~/venv/bin/activate
+
+module load cuda/10.2.89
+
+export HOME_DIR="/project/RDS-FEI-VUR-RW/jnar3156/DeepSatModels"
+cd $HOME_DIR
+
+NOW=$(date +"%Y-%m-%d_%T")
+python "${HOME_DIR}/train_and_eval/segmentation_training_transf.py" --config configs/PASTIS24/TSViT_fold1_hpc.yaml --device '0' 2>&1 >~/"run_${NOW}.log"
