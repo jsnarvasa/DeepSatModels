@@ -210,9 +210,8 @@ if __name__ == "__main__":
     #device_ids = [0, 1]
     lin_cls = False
 
-    device = get_device(device_ids, allow_cpu=False)
-
     config = read_yaml(config_file)
+    device = get_device(device_ids, allow_cpu=config['ALLOW_CPU'])
     config['local_device_ids'] = device_ids
 
     dataloaders = get_dataloaders(config)

@@ -1,3 +1,5 @@
+ALLOW_CPU: True
+
 MODEL:
   architecture:  "TSViT"
   img_res: 24
