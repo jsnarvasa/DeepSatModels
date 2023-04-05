@@ -1,4 +1,5 @@
 ALLOW_CPU: False
+DEVICE_ID: [0]
 
 MODEL:
   architecture:  "TSViT"

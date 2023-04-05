@@ -113,7 +113,7 @@ def train_and_evaluate(net, dataloaders, config, device, lin_cls=False):
 
     print("current learn rate: ", lr)
 
-    if len(local_device_ids) > 1:
+    if local_device_ids is not None and len(local_device_ids) > 1:
         net = nn.DataParallel(net, device_ids=local_device_ids)
     net.to(device)
 
@@ -195,15 +195,15 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
     parser.add_argument('--config', help='configuration (.yaml) file to use')
-    parser.add_argument('--device', default='0,1', type=str,
-                         help='gpu ids to use')
+    # parser.add_argument('--device', default='0,1', type=str,
+    #                      help='gpu ids to use')
     # parser.add_argument('--lin', action='store_true',
     #                      help='train linear classifier only')
     #
     args = parser.parse_args()
     config_file = args.config
-    print(args.device)
-    device_ids = [int(d) for d in args.device.split(',')]
+    # print(args.device)
+    # device_ids = [int(d) for d in args.device.split(',')]
     # lin_cls = args.lin
 
     #config_file = 'configs/PASTIS24/TSViT_fold1.yaml'
@@ -211,8 +211,8 @@ if __name__ == "__main__":
     lin_cls = False
 
     config = read_yaml(config_file)
-    device = get_device(device_ids, allow_cpu=config['ALLOW_CPU'])
-    config['local_device_ids'] = device_ids
+    device = get_device(config['DEVICE_ID'], allow_cpu=config['ALLOW_CPU'])
+    config['local_device_ids'] = config['DEVICE_ID']
 
     dataloaders = get_dataloaders(config)
 
