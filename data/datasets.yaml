@@ -32,6 +32,11 @@ PASTIS24_fold1_hpc:
     paths_eval: "/project/RDS-FEI-VUR-RW/jnar3156/PASTIS24/fold-paths/fold_4_paths.csv"
     paths_test: "/project/RDS-FEI-VUR-RW/jnar3156/PASTIS24/fold-paths/fold_5_paths.csv"
 
+PASTIS24_fold1_gcp:
+    basedir: "/home/jsnarvasa/PASTIS24"
+    paths_train: "/home/jsnarvasa/PASTIS24/fold-paths/folds_1_123_paths.csv"
+    paths_eval: "/home/jsnarvasa/PASTIS24/fold-paths/fold_4_paths.csv"
+    paths_test: "/home/jsnarvasa/PASTIS24/fold-paths/fold_5_paths.csv"
 
 PASTIS24_fold2:
     basedir: ".../PASTIS24"
