@@ -13,6 +13,16 @@
             "justMyCode": true,
             "cwd": "${workspaceFolder}",
             "args": ["--config", "configs/PASTIS24/TSViT_fold1_local.yaml"]
+        },
+        {
+            "name": "Space Hackathon SAR",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}",
+            "args": ["--config", "configs/SAR/TSViT_fold1_gcp.yaml"]
         }
     ]
 }
