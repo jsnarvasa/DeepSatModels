@@ -1,0 +1,16 @@
+gcloud compute instances create ml \
+    --project=infra-affinity-383123 \
+    --zone=asia-southeast1-b \
+    --machine-type=n1-standard-2 \
+    --network-interface=network-tier=PREMIUM,subnet=default \
+    --maintenance-policy=TERMINATE \
+    --provisioning-model=STANDARD \
+    --service-account=402191987754-compute@developer.gserviceaccount.com \
+    --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append \
+    --accelerator=count=1,type=nvidia-tesla-t4 \
+    --create-disk=boot=yes,device-name=ml,image=projects/ml-images/global/images/c0-deeplearning-common-cu113-v20230331-debian-10-py37,mode=rw,size=100,type=projects/infra-affinity-383123/zones/asia-southeast1-b/diskTypes/pd-balanced \
+    --no-shielded-secure-boot \
+    --shielded-vtpm \
+    --shielded-integrity-monitoring \
+    --labels=ec-src=vm_add-gcloud \
+    --reservation-affinity=any
