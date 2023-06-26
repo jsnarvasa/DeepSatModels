@@ -9,7 +9,7 @@ from utils.config_files_utils import get_params_values
 from scipy import ndimage
 
 
-def PASTIS_segmentation_transform(model_config, is_training):
+def PASTIS_segmentation_transform(model_config, is_training, normalize=True):
     """
     """
     dataset_img_res = 24
@@ -19,7 +19,10 @@ def PASTIS_segmentation_transform(model_config, is_training):
     inputs_backward = get_params_values(model_config, 'inputs_backward', False)
     transform_list = []
     transform_list.append(ToTensor())                                  # data from numpy arrays to torch.float32
-    transform_list.append(Normalize())                                 # normalize all inputs individually
+    if normalize:
+        transform_list.append(Normalize())                                 # normalize all inputs individually
+    else:
+        transform_list.append(NormalizeDOY())
 
     if dataset_img_res != input_img_res:
         transform_list.append(
@@ -124,6 +127,16 @@ class Normalize(object):
         # print('mean: ', sample['img'].mean(dim=(0,2,3)))
         # print('std : ', sample['img'].std(dim=(0,2,3)))
         sample['inputs'] = (sample['inputs'] - self.mean_fold1) / self.std_fold1
+        sample['doy'] = sample['doy'] / 365.0001
+        return sample
+    
+class NormalizeDOY(object):
+    """
+    This is only to normalize the doy attribute of the image object
+    To be used only for the Space Hackathon
+    """
+
+    def __call__(self, sample):
         sample['doy'] = sample['doy'] / 365.0001
         return sample
 

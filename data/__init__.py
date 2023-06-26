@@ -36,6 +36,11 @@ def get_dataloaders(config):
             paths_file=train_config['paths'], root_dir=train_config['base_dir'],
             transform=PASTIS_segmentation_transform(model_config, is_training=True),
             batch_size=train_config['batch_size'], shuffle=True, num_workers=train_config['num_workers'])
+    elif 'SAR' in train_config['dataset']:
+        dataloaders['train'] = get_pastis_dataloader(
+            paths_file=train_config['paths'], root_dir=train_config['base_dir'],
+            transform=PASTIS_segmentation_transform(model_config, is_training=True, normalize=False),
+            batch_size=train_config['batch_size'], shuffle=True, num_workers=train_config['num_workers'])
     else:
         dataloaders['train'] = get_france_dataloader(
             paths_file=train_config['paths'], root_dir=train_config['base_dir'],
@@ -51,6 +56,11 @@ def get_dataloaders(config):
             transform=MTLCC_transform(model_config, eval_config, is_training=False),
             batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
     elif 'PASTIS' in eval_config['dataset']:
+        dataloaders['eval'] = get_pastis_dataloader(
+            paths_file=eval_config['paths'], root_dir=eval_config['base_dir'],
+            transform=PASTIS_segmentation_transform(model_config, is_training=False),
+            batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
+    elif 'SAR' in eval_config['dataset']:
         dataloaders['eval'] = get_pastis_dataloader(
             paths_file=eval_config['paths'], root_dir=eval_config['base_dir'],
             transform=PASTIS_segmentation_transform(model_config, is_training=False),

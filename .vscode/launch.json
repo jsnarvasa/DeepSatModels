@@ -12,7 +12,7 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "cwd": "${workspaceFolder}",
-            "args": ["--config", "configs/PASTIS24/TSViT_fold1_local.yaml"]
+            "args": ["--config", "configs/PASTIS24/TSViT_fold1_gcp.yaml"]
         },
         {
             "name": "Space Hackathon SAR",
