@@ -63,7 +63,7 @@ def get_dataloaders(config):
     elif 'SAR' in eval_config['dataset']:
         dataloaders['eval'] = get_pastis_dataloader(
             paths_file=eval_config['paths'], root_dir=eval_config['base_dir'],
-            transform=PASTIS_segmentation_transform(model_config, is_training=False),
+            transform=PASTIS_segmentation_transform(model_config, is_training=False, normalize=False),
             batch_size=eval_config['batch_size'], shuffle=False, num_workers=eval_config['num_workers'])
     else:
         dataloaders['eval'] = get_france_dataloader(
