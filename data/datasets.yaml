@@ -67,4 +67,10 @@ SAR_fold1_gcp:
     paths_train: "/home/jsnarvasa/SAR/fold-paths/folds_1_123_paths.csv"
     paths_eval: "/home/jsnarvasa/SAR/fold-paths/fold_4_paths.csv"
     paths_test: "/home/jsnarvasa/SAR/fold-paths/fold_5_paths.csv"
+
+SAR_fold1_planetary:
+    basedir: "/home/jsnarvasa/SAR"
+    paths_train: /home/jovyan/data/s1/fold-paths/train.csv"
+    paths_eval: "/home/jovyan/data/s1/fold-paths/eval.csv"
+    paths_test: "/home/jovyan/data/s1/fold-paths/test.csv"
 # ------------------------------------------------------------------------------------------------------------------
