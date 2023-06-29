@@ -63,10 +63,10 @@ PASTIS24_fold5:
     paths_test: ".../fold-paths/fold_4_paths.csv"
 
 SAR_fold1_gcp:
-    basedir: "/home/jsnarvasa/SAR"
-    paths_train: "/home/jsnarvasa/SAR/fold-paths/folds_1_123_paths.csv"
-    paths_eval: "/home/jsnarvasa/SAR/fold-paths/fold_4_paths.csv"
-    paths_test: "/home/jsnarvasa/SAR/fold-paths/fold_5_paths.csv"
+    basedir: "/home/jsnarvasa/s1"
+    paths_train: "/home/jsnarvasa/s1/fold-paths/train.csv"
+    paths_eval: "/home/jsnarvasa/s1/fold-paths/eval.csv"
+    paths_test: "/home/jsnarvasa/s1/fold-paths/test.csv"
 
 SAR_fold1_planetary:
     basedir: "/home/jsnarvasa/SAR"
