@@ -38,6 +38,12 @@ PASTIS24_fold1_gcp:
     paths_eval: "/home/jsnarvasa/PASTIS24/fold-paths/fold_4_paths.csv"
     paths_test: "/home/jsnarvasa/PASTIS24/fold-paths/fold_5_paths.csv"
 
+PASTIS24_fold1_vultr:
+    basedir: "/root/PASTIS24"
+    paths_train: "/root/PASTIS24/fold-paths/folds_1_123_paths.csv"
+    paths_eval: "/root/PASTIS24/fold-paths/fold_4_paths.csv"
+    paths_test: "/root/PASTIS24/fold-paths/fold_5_paths.csv"
+
 PASTIS24_fold2:
     basedir: ".../PASTIS24"
     paths_train: ".../fold-paths/folds_2_234_paths.csv"
