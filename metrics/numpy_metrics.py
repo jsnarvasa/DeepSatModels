@@ -51,7 +51,7 @@ def get_prediction_splits(predicted, labels, n_classes):  # , unk_masks=None):  
     FN = (rowsum - diag).astype(np.float32)
     FP = (colsum - diag).astype(np.float32)
     IOU = diag / (rowsum + colsum - diag)
-    macro_IOU = diag.sum() / (rowsum.sum() + colsum.sum() - diag.sum())
+    micro_IOU = diag.sum() / (rowsum.sum() + colsum.sum() - diag.sum())
     # ---------------------------------------------------------
     #if unk_masks is not None:
     #    predicted = predicted[unk_masks]
@@ -69,7 +69,7 @@ def get_prediction_splits(predicted, labels, n_classes):  # , unk_masks=None):  
     num_correct = np.array(num_correct)
     #if not per_class:
     #    return TP.sum(), FP.sum(), FN.sum(), num_correct.sum(), num_total.sum(), IOU[~np.isnan(IOU)].mean()
-    return TP, FP, FN, num_correct, num_total, IOU, macro_IOU
+    return TP, FP, FN, num_correct, num_total, IOU, micro_IOU
 
 
 def get_splits(predicted, labels, n_classes):  # , unk_masks=None, per_class=False):
