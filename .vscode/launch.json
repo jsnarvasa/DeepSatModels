@@ -23,6 +23,16 @@
             "justMyCode": true,
             "cwd": "${workspaceFolder}",
             "args": ["--config", "configs/SAR/TSViT_fold1_gcp.yaml"]
-        }
+        },
+        {
+            "name": "Python: Current File - Vultr",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}",
+            "args": ["--config", "configs/PASTIS24/TSViT_fold1_vultr.yaml"]
+        },
     ]
 }

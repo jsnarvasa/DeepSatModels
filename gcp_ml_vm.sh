@@ -1,16 +1,16 @@
-gcloud compute instances create ml \
-    --project=infra-affinity-383123 \
-    --zone=asia-southeast1-b \
+gcloud compute instances create gcp-ai-au \
+    --project=skilled-orbit-396405 \
+    --zone=australia-southeast1-c \
     --machine-type=n1-standard-2 \
-    --network-interface=network-tier=PREMIUM,subnet=default \
+    --network-interface=network-tier=STANDARD,stack-type=IPV4_ONLY,subnet=default \
     --maintenance-policy=TERMINATE \
     --provisioning-model=STANDARD \
-    --service-account=402191987754-compute@developer.gserviceaccount.com \
+    --service-account=1039321675458-compute@developer.gserviceaccount.com \
     --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append \
     --accelerator=count=1,type=nvidia-tesla-t4 \
-    --create-disk=boot=yes,device-name=ml,image=projects/ml-images/global/images/c0-deeplearning-common-cu113-v20230331-debian-10-py37,mode=rw,size=100,type=projects/infra-affinity-383123/zones/asia-southeast1-b/diskTypes/pd-balanced \
+    --create-disk=boot=yes,device-name=gcp-ai-or,image=projects/ml-images/global/images/c0-deeplearning-common-gpu-v20230807-debian-11-py310,mode=rw,size=175,type=projects/skilled-orbit-396405/zones/us-west1-a/diskTypes/pd-balanced \
     --no-shielded-secure-boot \
     --shielded-vtpm \
     --shielded-integrity-monitoring \
-    --labels=ec-src=vm_add-gcloud \
+    --labels=goog-ec-src=vm_add-gcloud \
     --reservation-affinity=any
